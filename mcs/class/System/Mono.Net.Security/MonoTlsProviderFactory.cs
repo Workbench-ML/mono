@@ -50,6 +50,10 @@ using Mono.Btls;
 using Mono.AppleTls;
 #endif
 
+#if UNITY
+using Mono.Unity;
+#endif
+
 #if !MOBILE
 using System.Reflection;
 #endif
@@ -337,6 +341,10 @@ namespace Mono.Net.Security
 				if (IsBtlsSupported ())
 					goto case "btls";
 #endif
+#if UNITY
+				if (Mono.Unity.UnityTls.IsSupported)
+					goto case "unitytls";
+#endif
 				throw new NotSupportedException ("TLS Support not available.");
 #if MONO_FEATURE_APPLETLS
 			case "apple":
@@ -345,6 +353,10 @@ namespace Mono.Net.Security
 #if MONO_FEATURE_BTLS
 			case "btls":
 				return new MonoBtlsProvider ();
+#endif
+#if UNITY
+			case "unitytls":
+				return new UnityTlsProvider ();
 #endif
 			}
 
