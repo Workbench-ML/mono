@@ -27,5 +27,8 @@
     <ClCompile Include="$(MonoSourceLocation)\mono\mini\mini-windows-dllmain.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\mono\mini\dnSpy.c">
+      <Filter>Source Files\libmini\common</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
